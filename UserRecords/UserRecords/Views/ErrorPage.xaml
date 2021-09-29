@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UserRecords.Views.ErrorPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Image Source="nointernet.jpg"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+            <Button Text="Back"
+                    Command="{Binding BackCommand}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

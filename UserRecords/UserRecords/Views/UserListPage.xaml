@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UserRecords.Views.UserListPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView x:Name="userList"
+                        ItemsSource="{Binding Users}"
+                        SelectionMode="Single">
+                <CollectionView.Behaviors>
+                    <prism:EventToCommandBehavior Command="{Binding SelectItemCommand}"
+                                              CommandParameter="{Binding Source={x:Reference userList}}"
+                                              EventName="SelectionChanged"/>
+                </CollectionView.Behaviors>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"
+                                 Margin="0,10"
+                                 Padding="16,0">
+                            <Image Source="{Binding ImageUrl}"
+                               HeightRequest="50"
+                               WidthRequest="50"  />
+                            <Label Text="{Binding Name}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        
+    </ContentPage.Content>
+</ContentPage>
